@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Keboola\CreateEmptyTablesProcessor;
 
 use Keboola\Component\BaseComponent;
+use Keboola\Component\Manifest\ManifestManager\Options\OutTableManifestOptions;
 use Keboola\Csv\CsvWriter;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
@@ -29,6 +30,8 @@ class Component extends BaseComponent
 
             $csv = new CsvWriter($filename . '.csv');
             $csv->writeRow($table['columns']);
+
+            $this->createManifest($table['tableName'], $table['columns']);
 
             $this->getLogger()->info(sprintf('Adding empty table "%s".', $table['tableName']));
         }
@@ -69,5 +72,19 @@ class Component extends BaseComponent
                 )->mustRun();
             }
         }
+    }
+
+    private function createManifest(string $tableName, array $columns): void
+    {
+        $manifestManager = $this->getManifestManager();
+
+        $outTableManifestOptions = new OutTableManifestOptions();
+        $outTableManifestOptions->setColumns($columns);
+        $outTableManifestOptions->setIncremental(false);
+        $outTableManifestOptions->setDelimiter(',');
+        $outTableManifestOptions->setEnclosure('"');
+        $outTableManifestOptions->setPrimaryKeyColumns([]);
+
+        $manifestManager->writeTableManifest($tableName . '.csv', $outTableManifestOptions);
     }
 }
