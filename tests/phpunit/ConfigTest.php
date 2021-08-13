@@ -35,7 +35,7 @@ class ConfigTest extends TestCase
                 'parameters' => [
                     'tables' => [
                         [
-                            'table' => 'simple-table',
+                            'tableName' => 'simple-table',
                             'columns' => [
                                 'col_1',
                                 'col_2',
@@ -76,7 +76,7 @@ class ConfigTest extends TestCase
                     ],
                 ],
             ],
-            'The child config "table" under "root.parameters.tables.0" must be configured.',
+            'The child config "tableName" under "root.parameters.tables.0" must be configured.',
         ];
 
         yield 'empty-table-name' => [
@@ -84,12 +84,12 @@ class ConfigTest extends TestCase
                 'parameters' => [
                     'tables' => [
                         [
-                            'table' => '',
+                            'tableName' => '',
                         ],
                     ],
                 ],
             ],
-            'The path "root.parameters.tables.0.table" cannot contain an empty value, but got "".',
+            'The path "root.parameters.tables.0.tableName" cannot contain an empty value, but got "".',
         ];
 
         yield 'missing-table-columns' => [
@@ -97,7 +97,7 @@ class ConfigTest extends TestCase
                 'parameters' => [
                     'tables' => [
                         [
-                            'table' => 'testTable',
+                            'tableName' => 'testTable',
                         ],
                     ],
                 ],
@@ -110,7 +110,7 @@ class ConfigTest extends TestCase
                 'parameters' => [
                     'tables' => [
                         [
-                            'table' => 'testTable',
+                            'tableName' => 'testTable',
                             'columns' => [],
                         ],
                     ],

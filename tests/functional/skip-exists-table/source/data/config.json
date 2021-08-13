@@ -2,7 +2,7 @@
   "parameters": {
     "tables": [
       {
-        "table": "simple-empty-table",
+        "tableName": "simple-empty-table",
         "columns": [
           "col_1",
           "col_2",
@@ -11,7 +11,7 @@
         ]
       },
       {
-        "table": "table-in-dir",
+        "tableName": "table-in-dir",
         "columns": [
           "col_1",
           "col_2"

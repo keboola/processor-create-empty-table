@@ -20,17 +20,17 @@ class Component extends BaseComponent
         $this->copyFiles($inputDir, $outputDir);
 
         foreach ($this->getConfig()->getTables() as $table) {
-            $filename = sprintf('%s/tables/%s', $outputDir, $table['table']);
+            $filename = sprintf('%s/tables/%s', $outputDir, $table['tableName']);
 
             if (file_exists($filename) || file_exists($filename . '.csv')) {
-                $this->getLogger()->info(sprintf('Table "%s" is exists. Skipping.', $table['table']));
+                $this->getLogger()->info(sprintf('Table "%s" is exists. Skipping.', $table['tableName']));
                 continue;
             }
 
             $csv = new CsvWriter($filename . '.csv');
             $csv->writeRow($table['columns']);
 
-            $this->getLogger()->info(sprintf('Adding empty table "%s".', $table['table']));
+            $this->getLogger()->info(sprintf('Adding empty table "%s".', $table['tableName']));
         }
     }
 

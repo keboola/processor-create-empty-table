@@ -21,7 +21,7 @@ class ConfigDefinition extends BaseConfigDefinition
                     ->requiresAtLeastOneElement()
                     ->arrayPrototype()
                         ->children()
-                            ->scalarNode('table')->isRequired()->cannotBeEmpty()->end()
+                            ->scalarNode('tableName')->isRequired()->cannotBeEmpty()->end()
                             ->arrayNode('columns')
                                 ->isRequired()
                                 ->requiresAtLeastOneElement()
