@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "tables": [
+      {
+        "table": "simple-empty-table",
+        "columns": [
+          "col_1",
+          "col_2",
+          "col_3",
+          "col_4"
+        ]
+      },
+      {
+        "table": "table-in-dir",
+        "columns": [
+          "col_1",
+          "col_2"
+        ]
+      }
+    ]
+  }
+}

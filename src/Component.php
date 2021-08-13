@@ -29,6 +29,8 @@ class Component extends BaseComponent
 
             $csv = new CsvWriter($filename . '.csv');
             $csv->writeRow($table['columns']);
+
+            $this->getLogger()->info(sprintf('Adding empty table "%s".', $table['table']));
         }
     }
 
