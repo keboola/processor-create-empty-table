@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "tables": [
+      {
+        "tableName": "simple-empty-table",
+        "columns": [
+          "col_1",
+          "col_2",
+          "col_3",
+          "col_4"
+        ]
+      }
+    ]
+  }
+}
