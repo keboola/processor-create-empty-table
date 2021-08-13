@@ -4,7 +4,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.4",
-        "keboola/php-component": "^8.1"
+        "keboola/csv": "^2.2",
+        "keboola/php-component": "^8.1",
+        "symfony/filesystem": "^5.3",
+        "symfony/finder": "^5.3"
     },
     "require-dev": {
         "php-parallel-lint/php-parallel-lint": "^1.2",
@@ -17,13 +20,13 @@
     },
     "autoload": {
         "psr-4": {
-            "MyComponent\\": "src/"
+            "Keboola\\CreateEmptyTablesProcessor\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MyComponent\\Tests\\": "tests/phpunit/",
-            "MyComponent\\FunctionalTests\\": "tests/functional/"
+            "Keboola\\CreateEmptyTablesProcessor\\Tests\\": "tests/phpunit/",
+            "Keboola\\CreateEmptyTablesProcessor\\FunctionalTests\\": "tests/functional/"
         }
     },
     "scripts": {
