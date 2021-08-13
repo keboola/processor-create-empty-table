@@ -24,7 +24,7 @@ class Component extends BaseComponent
             $filename = sprintf('%s/tables/%s', $outputDir, $table['tableName']);
 
             if (file_exists($filename)) {
-                $this->getLogger()->info(sprintf('Table "%s" is exists. Skipping.', $table['tableName']));
+                $this->getLogger()->info(sprintf('Table "%s" exists. Skipping.', $table['tableName']));
                 continue;
             }
 
