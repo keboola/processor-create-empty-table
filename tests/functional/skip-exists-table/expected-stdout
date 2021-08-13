@@ -1,2 +1,2 @@
-Table "simple-empty-table" is exists. Skipping.
-Table "table-in-dir" is exists. Skipping.
+Table "simple-empty-table.csv" exists. Skipping.
+Table "table-in-dir" exists. Skipping.

@@ -23,13 +23,13 @@ class Component extends BaseComponent
         foreach ($this->getConfig()->getTables() as $table) {
             $filename = sprintf('%s/tables/%s', $outputDir, $table['tableName']);
 
-            if (file_exists($filename) || file_exists($filename . '.csv')) {
-                $this->getLogger()->info(sprintf('Table "%s" is exists. Skipping.', $table['tableName']));
+            if (file_exists($filename)) {
+                $this->getLogger()->info(sprintf('Table "%s" exists. Skipping.', $table['tableName']));
                 continue;
             }
 
-            $csv = new CsvWriter($filename . '.csv');
-            $csv->writeRow($table['columns']);
+            $filename = $this->createFile($outputDir . '/tables/', $table['tableName']);
+            $csv = new CsvWriter($filename);
 
             $this->createManifest($table['tableName'], $table['columns']);
 
@@ -57,7 +57,7 @@ class Component extends BaseComponent
     private function copyFiles(string $inputDir, string $outputDir): void
     {
         $fs = new Filesystem();
-        $fs->mkdir($outputDir);
+        $fs->mkdir($outputDir . '/tables');
 
         if ($fs->exists($inputDir)) {
             $finder = new Finder();
@@ -74,6 +74,19 @@ class Component extends BaseComponent
         }
     }
 
+    private function createFile(string $dir, string $tableName): string
+    {
+        $fileInfo = pathinfo($dir . $tableName);
+        if (isset($fileInfo['extension'])) {
+            return $dir . $tableName;
+        }
+
+        $fs = new Filesystem();
+        $fs->mkdir($dir . $tableName);
+
+        return $dir . $tableName . '/data';
+    }
+
     private function createManifest(string $tableName, array $columns): void
     {
         $manifestManager = $this->getManifestManager();
@@ -85,6 +98,6 @@ class Component extends BaseComponent
         $outTableManifestOptions->setEnclosure('"');
         $outTableManifestOptions->setPrimaryKeyColumns([]);
 
-        $manifestManager->writeTableManifest($tableName . '.csv', $outTableManifestOptions);
+        $manifestManager->writeTableManifest($tableName, $outTableManifestOptions);
     }
 }

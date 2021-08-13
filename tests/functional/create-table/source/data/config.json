@@ -2,7 +2,16 @@
   "parameters": {
     "tables": [
       {
-        "tableName": "simple-empty-table",
+        "tableName": "simple-empty-table.csv",
+        "columns": [
+          "col_1",
+          "col_2",
+          "col_3",
+          "col_4"
+        ]
+      },
+      {
+        "tableName": "simple-empty-dir-table",
         "columns": [
           "col_1",
           "col_2",

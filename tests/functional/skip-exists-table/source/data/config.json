@@ -2,7 +2,7 @@
   "parameters": {
     "tables": [
       {
-        "tableName": "simple-empty-table",
+        "tableName": "simple-empty-table.csv",
         "columns": [
           "col_1",
           "col_2",
