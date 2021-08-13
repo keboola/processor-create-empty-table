@@ -10,11 +10,11 @@
         "symfony/finder": "^5.3"
     },
     "require-dev": {
-        "php-parallel-lint/php-parallel-lint": "^1.2",
-        "keboola/coding-standard": ">=7.0.2",
+        "keboola/coding-standard": "^13.0",
         "keboola/datadir-tests": "^5.2",
         "keboola/php-temp": "^2.0",
-        "phpstan/phpstan": "^0.12.14",
+        "php-parallel-lint/php-parallel-lint": "^1.2",
+        "phpstan/phpstan": "^0.12.94",
         "phpunit/phpunit": "^9.0",
         "symfony/process": "^5.0"
     },
